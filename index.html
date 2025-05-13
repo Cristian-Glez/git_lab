@@ -1,49 +1,323 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página de proyecto Git">
-    <title>Proyecto Git</title>
+    <meta name="description" content="Página de proyecto Git con diseño moderno y funcionalidades avanzadas">
+    <meta name="keywords" content="Git, control versiones, desarrollo, programación">
+    <meta name="author" content="Tu Nombre">
+    <title>Proyecto Git | Gestión de Versiones Moderna</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Proyecto Git Moderno">
+    <meta property="og:description" content="Página de proyecto Git con diseño moderno">
+    <meta property="og:type" content="website">
+    
+    <!-- CSS Moderno -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f8961e;
+            --danger-color: #ef233c;
         }
         
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+        [data-theme="dark"] {
+            --primary-color: #4895ef;
+            --secondary-color: #560bad;
+            --light-color: #212529;
+            --dark-color: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: rgba(68, 97, 238, 0.1);
+            border-radius: 8px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        [data-theme="dark"] .card {
+            background-color: #2b2d42;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: auto;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Bienvenido al Proyecto Git</h1>
-        <h2>Hola de nuevo</h2>
+        <h1><i class="fas fa-code-branch"></i> Proyecto Git Moderno</h1>
+        <p>Gestión de versiones para el desarrollo colaborativo</p>
     </header>
     
+    <nav>
+        <ul>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#features"><i class="fas fa-star"></i> Características</a></li>
+            <li><a href="#comandos"><i class="fas fa-terminal"></i> Comandos</a></li>
+            <li><a href="#recursos"><i class="fas fa-book"></i> Recursos</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+    
     <main>
-        <section>
-            <h3>Prueba para ver si funciona (prueba de hoy)</h3>
-            <p>Este es un párrafo de ejemplo que añade más contenido semántico.</p>
+        <section id="inicio" class="hero">
+            <h2>Bienvenido al futuro del control de versiones</h2>
+            <p>Git es el sistema de control de versiones distribuido más popular del mundo, utilizado por millones de desarrolladores para gestionar proyectos de todos los tamaños.</p>
+            <button style="margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--accent-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                Comenzar ahora <i class="fas fa-arrow-right"></i>
+            </button>
         </section>
         
-        <section>
-            <h4>Esperando</h4>
-            <p>Otro párrafo de ejemplo para mejorar la estructura.</p>
+        <section id="features">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Características Principales</h2>
+            <div class="features">
+                <div class="card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Distribuido</h3>
+                    <p>Cada desarrollador tiene una copia completa del repositorio, permitiendo trabajo offline y múltiples flujos de trabajo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-code"></i>
+                    <h3>Ramas y Fusiones</h3>
+                    <p>Las ramas livianas y las poderosas capacidades de fusión hacen que Git sea ideal para el desarrollo colaborativo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguro</h3>
+                    <p>Git utiliza SHA-1 para almacenar objetos, asegurando la integridad de tu historial de código.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comandos">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Comandos Básicos</h2>
+            <div class="features">
+                <div class="card">
+                    <i class="fas fa-folder-plus"></i>
+                    <h3>git init</h3>
+                    <p>Inicializa un nuevo repositorio Git en tu directorio actual.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>git push</h3>
+                    <p>Envía tus cambios confirmados al repositorio remoto.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-history"></i>
+                    <h3>git log</h3>
+                    <p>Muestra el historial de confirmaciones para la rama actual.</p>
+                </div>
+            </div>
         </section>
     </main>
     
-    <footer>
-        <p>&copy; 2023 Proyecto Git. Todos los derechos reservados.</p>
+    <footer id="contacto">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Proyecto Git Moderno</h3>
+            <p style="margin: 1rem 0;">Sistema de control de versiones para el desarrollo colaborativo</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                <a href="#" style="color: white;"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="#" style="color: white;"><i class="fas fa-envelope fa-2x"></i></a>
+            </div>
+            <p>&copy; 2023 Proyecto Git Moderno. Todos los derechos reservados.</p>
+        </div>
     </footer>
+    
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <script>
+        // Tema oscuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Comprobar preferencias del sistema
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Alternar tema
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Guardar preferencia
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
+        // Smooth scrolling para enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
